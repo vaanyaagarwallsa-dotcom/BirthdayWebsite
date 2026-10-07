@@ -1,0 +1,183 @@
+/* ============================================================
+   ANUSHKA BIRTHDAY WEBSITE — GLOBAL STYLES
+   ============================================================
+   CUSTOMIZATION: Change the colour palette below in :root
+   These variables are used everywhere on the site.
+   ============================================================ */
+
+/* ================================
+   COLOUR PALETTE — edit these!
+   ================================ */
+:root {
+  --pink: #f9a8d4;
+  --pink-dark: #ec4899;
+  --pink-light: #fce7f3;
+  --lavender: #c4b5fd;
+  --lavender-light: #ede9fe;
+  --cream: #fef9f0;
+  --cream-dark: #fdf0d5;
+  --baby-blue: #bae6fd;
+  --baby-blue-dark: #7dd3fc;
+  --yellow: #fde68a;
+  --black: #1a1a2e;
+  --dark: #2d1b69;
+  --mid: #6b5b95;
+  --white: #ffffff;
+
+  /* Fonts */
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-handwritten: 'Caveat', cursive;
+  --font-body: 'Nunito', sans-serif;
+}
+
+/* ================================
+   RESET & BASE
+   ================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--cream);
+  color: var(--black);
+  overflow-x: hidden;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cpolygon points='0,0 0,14 4,10 7,17 9,16 6,9 11,9' fill='%231a1a2e' stroke='%23fce7f3' stroke-width='1'/%3E%3C/svg%3E"), auto;
+}
+
+/* ================================
+   SCROLLBAR
+   ================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--lavender-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--pink);
+  border-radius: 4px;
+}
+
+/* ================================
+   UTILITY CLASSES
+   ================================ */
+.pixel-font { font-family: var(--font-pixel); }
+.handwritten-font { font-family: var(--font-handwritten); }
+.body-font { font-family: var(--font-body); }
+
+/* Checkerboard pattern (reusable) */
+.checkerboard {
+  background-image:
+    repeating-conic-gradient(var(--lavender-light) 0% 25%, var(--pink-light) 0% 50%);
+  background-size: 16px 16px;
+}
+
+/* Pixel border (reusable) */
+.pixel-border {
+  box-shadow:
+    4px 0 0 0 var(--black),
+    -4px 0 0 0 var(--black),
+    0 4px 0 0 var(--black),
+    0 -4px 0 0 var(--black),
+    4px 4px 0 0 var(--black),
+    -4px 4px 0 0 var(--black),
+    4px -4px 0 0 var(--black),
+    -4px -4px 0 0 var(--black);
+}
+
+/* Dashed cute border */
+.cute-border {
+  border: 3px dashed var(--pink);
+  border-radius: 12px;
+}
+
+/* Stars decoration */
+.star { display: inline-block; }
+
+/* ================================
+   ANIMATIONS
+   ================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sparkle-pop {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+  100% { transform: scale(1) rotate(360deg); opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(60px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-3deg); }
+  50% { transform: rotate(3deg); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.05); }
+}
+
+@keyframes confetti-fall {
+  0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; transform: scaleY(1) scaleX(1); }
+  25% { opacity: 0.9; transform: scaleY(1.05) scaleX(0.95); }
+  50% { opacity: 0.95; transform: scaleY(0.95) scaleX(1.05); }
+  75% { opacity: 1; transform: scaleY(1.02) scaleX(0.98); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(253, 230, 138, 0.6); }
+  50% { box-shadow: 0 0 20px 6px rgba(249, 168, 212, 0.8); }
+}
+
+@keyframes polaroid-slide {
+  0% { transform: translateY(-120%) rotate(var(--rot, -2deg)); opacity: 0; }
+  60% { transform: translateY(10%) rotate(var(--rot, -2deg)); }
+  80% { transform: translateY(-5%) rotate(var(--rot, -2deg)); }
+  100% { transform: translateY(0%) rotate(var(--rot, -2deg)); opacity: 1; }
+}
+
+@keyframes celebration-burst {
+  0% { transform: scale(0.5); opacity: 0; }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}

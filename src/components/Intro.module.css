@@ -1,0 +1,362 @@
+/* ============================================================
+   INTRO SCREEN STYLES
+   ============================================================ */
+
+.intro {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #fce7f3 0%, #ede9fe 35%, #fef9f0 65%, #dbeafe 100%);
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* ========================
+   BACKGROUND PATTERN
+   ======================== */
+.bgPattern {
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-conic-gradient(rgba(196, 181, 253, 0.25) 0% 25%, transparent 0% 50%);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ========================
+   CONFETTI
+   ======================== */
+.confetti {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  animation: confettiFall linear infinite;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* ========================
+   SPARKLES
+   ======================== */
+.sparkle {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  animation: sparklePulse ease-in-out infinite alternate;
+}
+
+@keyframes sparklePulse {
+  from { transform: scale(0.6) rotate(0deg); opacity: 0.4; }
+  to { transform: scale(1.2) rotate(30deg); opacity: 1; }
+}
+
+/* ========================
+   FLOATING HEARTS
+   ======================== */
+.floatingHeart {
+  position: absolute;
+  bottom: -40px;
+  pointer-events: none;
+  z-index: 1;
+  animation: heartRise ease-in infinite;
+}
+
+@keyframes heartRise {
+  0% { transform: translateY(0) scale(0.8); opacity: 1; }
+  80% { opacity: 0.6; }
+  100% { transform: translateY(-110vh) scale(1.2); opacity: 0; }
+}
+
+/* ========================
+   CORNER DECORATIONS
+   ======================== */
+.cornerTL, .cornerTR, .cornerBL, .cornerBR {
+  position: absolute;
+  font-size: 10px;
+  font-family: 'Press Start 2P', monospace;
+  color: var(--lavender);
+  pointer-events: none;
+  z-index: 2;
+  letter-spacing: 4px;
+}
+.cornerTL { top: 16px; left: 16px; }
+.cornerTR { top: 16px; right: 16px; }
+.cornerBL { bottom: 16px; left: 16px; }
+.cornerBR { bottom: 16px; right: 16px; }
+
+/* ========================
+   FLOATING PIXEL FRAMES
+   ======================== */
+.pixelFrame1, .pixelFrame2, .pixelFrame3 {
+  position: absolute;
+  width: 52px;
+  height: 52px;
+  border: 3px solid var(--black);
+  background: var(--cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 3px 3px 0 var(--black);
+  animation: float 3s ease-in-out infinite;
+}
+
+.pixelFrame1 {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+  background: var(--pink-light);
+}
+.pixelFrame2 {
+  top: 15%;
+  right: 6%;
+  animation-delay: 1s;
+  background: var(--lavender-light);
+}
+.pixelFrame3 {
+  bottom: 15%;
+  left: 8%;
+  animation-delay: 2s;
+  background: var(--cream-dark);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+/* ========================
+   MAIN CARD
+   ======================== */
+.card {
+  position: relative;
+  z-index: 10;
+  background: var(--cream);
+  border: 3px solid var(--black);
+  box-shadow:
+    6px 6px 0 var(--black),
+    12px 12px 0 var(--lavender),
+    18px 18px 0 var(--pink);
+  max-width: 540px;
+  width: 100%;
+  border-radius: 2px;
+  transform: translateY(30px) scale(0.95);
+  opacity: 0;
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+}
+
+.cardVisible {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ========================
+   TITLE BAR (fake window)
+   ======================== */
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--lavender);
+  border-bottom: 3px solid var(--black);
+  padding: 8px 12px;
+}
+
+.titleBarDots {
+  display: flex;
+  gap: 6px;
+}
+
+.titleBarDots span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid var(--black);
+}
+
+.titleBarText {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  color: var(--dark);
+}
+
+/* ========================
+   CARD BODY
+   ======================== */
+.cardBody {
+  padding: 28px 32px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(249,168,212,0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(196,181,253,0.1) 0%, transparent 50%);
+}
+
+.starsRow {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  color: var(--lavender);
+  letter-spacing: 6px;
+  animation: blink 2s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
+
+/* ========================
+   HEADING
+   ======================== */
+.headingWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.heading {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(16px, 4.5vw, 26px);
+  color: var(--dark);
+  line-height: 1.7;
+  text-align: center;
+  text-shadow:
+    3px 3px 0 var(--pink),
+    6px 6px 0 var(--lavender);
+}
+
+.nameWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.namePill {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(38px, 10vw, 58px);
+  font-weight: 700;
+  color: var(--dark);
+  background: var(--pink);
+  border: 3px solid var(--black);
+  padding: 4px 24px 6px;
+  display: inline-block;
+  box-shadow: 4px 4px 0 var(--black);
+  transform: rotate(-1.5deg);
+  animation: wiggleName 4s ease-in-out infinite;
+  line-height: 1.1;
+}
+
+@keyframes wiggleName {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50% { transform: rotate(1.5deg); }
+}
+
+/* ========================
+   HEART ROW
+   ======================== */
+.heartRow {
+  font-size: 20px;
+  color: var(--pink-dark);
+  letter-spacing: 8px;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.08); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.04); }
+}
+
+/* ========================
+   SUBTEXT
+   ======================== */
+.subtext {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--mid);
+  font-weight: 500;
+}
+
+/* ========================
+   ENTER BUTTON
+   ======================== */
+.enterBtn {
+  all: unset;
+  cursor: pointer;
+  margin-top: 8px;
+  position: relative;
+}
+
+.enterBtnInner {
+  display: block;
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(9px, 2.5vw, 12px);
+  color: var(--cream);
+  background: var(--dark);
+  border: 3px solid var(--black);
+  box-shadow: 5px 5px 0 var(--pink-dark);
+  padding: 14px 24px;
+  transition: all 0.15s ease;
+  letter-spacing: 1px;
+  line-height: 1.6;
+}
+
+.enterBtn:hover .enterBtnInner,
+.enterBtnHovered .enterBtnInner {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 var(--pink-dark);
+  background: var(--pink-dark);
+}
+
+.enterBtn:active .enterBtnInner {
+  transform: translate(5px, 5px);
+  box-shadow: 0px 0px 0 var(--pink-dark);
+}
+
+/* ========================
+   BOTTOM DECORATION
+   ======================== */
+.bottomDeco {
+  font-size: 13px;
+  color: var(--lavender);
+  letter-spacing: 8px;
+}
+
+/* ========================
+   RESPONSIVE
+   ======================== */
+@media (max-width: 480px) {
+  .card {
+    box-shadow:
+      4px 4px 0 var(--black),
+      8px 8px 0 var(--lavender),
+      12px 12px 0 var(--pink);
+  }
+
+  .cardBody {
+    padding: 20px 18px 24px;
+    gap: 10px;
+  }
+
+  .cornerTL, .cornerTR, .cornerBL, .cornerBR {
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .pixelFrame1, .pixelFrame2, .pixelFrame3 {
+    display: none;
+  }
+}
